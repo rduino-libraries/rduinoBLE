@@ -427,7 +427,7 @@ int HCIClass::sendAclPkt(uint16_t handle, uint8_t cid, uint8_t plen, void* data)
     uint16_t cid;
   } aclHdr = { HCI_ACLDATA_PKT, handle, uint8_t(plen + 4), plen, cid };
 
-  uint8_t txBuffer[sizeof(aclHdr) + plen];
+  uint8_t *txBuffer = uint8_t*malloc(sizeof(aclHdr) + plen);
   memcpy(txBuffer, &aclHdr, sizeof(aclHdr));
   memcpy(&txBuffer[sizeof(aclHdr)], data, plen);
 
@@ -437,7 +437,8 @@ int HCIClass::sendAclPkt(uint16_t handle, uint8_t cid, uint8_t plen, void* data)
 
   _pendingPkt++;
   HCITransport.write(txBuffer, sizeof(aclHdr) + plen);
-
+  free(txBuffer);
+  
   return 0;
 }
 
@@ -469,7 +470,7 @@ int HCIClass::sendCommand(uint16_t opcode, uint8_t plen, void* parameters)
     uint8_t plen;
   } pktHdr = {HCI_COMMAND_PKT, opcode, plen};
 
-  uint8_t txBuffer[sizeof(pktHdr) + plen];
+  uint8_t *txBuffer = uint8_t*malloc(sizeof(pktHdr) + plen);
   memcpy(txBuffer, &pktHdr, sizeof(pktHdr));
   memcpy(&txBuffer[sizeof(pktHdr)], parameters, plen);
 
@@ -485,6 +486,8 @@ int HCIClass::sendCommand(uint16_t opcode, uint8_t plen, void* parameters)
   for (unsigned long start = millis(); _cmdCompleteOpcode != opcode && millis() < (start + 1000);) {
     poll();
   }
+
+  free(txBuffer);
 
   return _cmdCompleteStatus;
 }
