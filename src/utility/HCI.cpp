@@ -413,7 +413,7 @@ int HCIClass::leConnUpdate(uint16_t handle, uint16_t minInterval, uint16_t maxIn
   return sendCommand(OGF_LE_CTL << 10 | OCF_LE_CONN_UPDATE, sizeof(leConnUpdateData), &leConnUpdateData);
 }
 
-int HCIClass::sendAclPkt(uint16_t handle, uint8_t cid, uint8_t plen, void* data)
+int HCIClass::sendAclPkt(uint16_t handle, uint8_t cid, uint8_t plen, const void* data)
 {
   while (_pendingPkt >= _maxPkt) {
     poll();
@@ -462,7 +462,7 @@ void HCIClass::noDebug()
   _debug = NULL;
 }
 
-int HCIClass::sendCommand(uint16_t opcode, uint8_t plen, void* parameters)
+int HCIClass::sendCommand(uint16_t opcode, uint8_t plen, const void* parameters)
 {
   struct __attribute__ ((packed)) {
     uint8_t pktType;
