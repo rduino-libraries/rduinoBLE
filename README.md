@@ -1,6 +1,6 @@
 👋 This is an **unofficial** fork of the official ArduinoBLE library, that incorporates the following pull requests originally submitted to the upstream repository:
 
-<!-- pull requests -->
+* https://github.com/arduino-libraries/ArduinoBLE/pull/53n<!-- pull requests -->
 
 You can consider this as an experimental version of the library, that you can use to test features contributed by the community that haven't been merged yet.
 
