@@ -15,7 +15,7 @@
   This example code is in the public domain.
 */
 
-#include <ArduinoBLE.h>
+#include <rduinoBLE.h>
 
  // Bluetooth® Low Energy Battery Service
 BLEService batteryService("180F");
