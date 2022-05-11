@@ -8,6 +8,7 @@
 * https://github.com/arduino-libraries/ArduinoBLE/pull/174
 * https://github.com/arduino-libraries/ArduinoBLE/pull/110
 * https://github.com/arduino-libraries/ArduinoBLE/pull/134
+* https://github.com/arduino-libraries/ArduinoBLE/pull/156
 <!-- pull requests -->
 
 You can consider this as an experimental version of the library, that you can use to test features contributed by the community that haven't been merged yet.
