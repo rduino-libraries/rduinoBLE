@@ -50,7 +50,6 @@ public:
   virtual String address() const;
 
   bool hasLocalName() const;
-  bool hasManufacturerData() const;
 
   bool hasAdvertisedServiceUuid() const;
   bool hasAdvertisedServiceUuid(int index) const;
@@ -61,7 +60,13 @@ public:
   String advertisedServiceUuid() const;
   String advertisedServiceUuid(int index) const;
 
-  int advertisementData(uint8_t value[], int length);
+  bool hasAdvertisementData() const;
+  int advertisementDataLength() const;
+  int advertisementData(uint8_t value[], int length) const;
+
+  bool hasManufacturerData() const;
+  int manufacturerDataLength() const;
+  int manufacturerData(uint8_t value[], int length) const;
 
   virtual int rssi();
 
