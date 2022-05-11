@@ -32,6 +32,11 @@ public:
   virtual bool advertising();
   virtual int advertise(uint8_t* advData, uint8_t advDataLength, uint8_t* scanData, uint8_t scanDataLength);
   virtual void stopAdvertise();
+  void setAdvertisedServiceUuid(const char* advertisedServiceUuid);
+  void setAdvertisedServiceData(uint16_t uuid, const uint8_t data[], int length);
+  void setManufacturerData(const uint8_t manufacturerData[], int manufacturerDataLength);
+  void setManufacturerData(const uint16_t companyId, const uint8_t manufacturerData[], int manufacturerDataLength);
+  void setLocalName(const char *localName);
 
   virtual int scan(bool withDuplicates);
   virtual int scanForName(String name, bool withDuplicates);
@@ -44,6 +49,10 @@ public:
   virtual void setConnectable(bool connectable);
 
   virtual void setEventHandler(BLEDeviceEvent event, BLEDeviceEventHandler eventHandler);
+
+protected:
+  friend class BLELocalCharacteristic;
+
 
 protected:
   friend class HCIClass;
