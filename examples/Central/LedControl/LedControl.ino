@@ -16,7 +16,7 @@
   This example code is in the public domain.
 */
 
-#include <ArduinoBLE.h>
+#include <rduinoBLE.h>
 
 // variables for button
 const int buttonPin = 2;
